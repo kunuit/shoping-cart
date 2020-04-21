@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 
 class Cart extends Component {
   render() {
-    var {children} = this.props
+    var { children } = this.props
     return (
       <section className="section">
         <div className="table-responsive">

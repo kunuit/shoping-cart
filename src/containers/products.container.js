@@ -5,8 +5,6 @@ import PropTypes from "prop-types";
 import Products from "./../components/Products";
 import Product from "./../components/Product";
 import { actAddToCart, actChangeMessage } from "../actions/index.action";
-import message from '../reducers/message.reducer';
-
 
 class ProductsContainer extends Component {
   render() {
@@ -52,6 +50,7 @@ ProductsContainer.propTypes = {
       rating: PropTypes.number.isRequired
     })
   ).isRequired,
+  onAddToCart: PropTypes.func.isRequired,
   onChangeMessage: PropTypes.func.isRequired
 }
 

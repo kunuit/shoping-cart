@@ -21,3 +21,11 @@ export const actDeleteProductInCart = (id) => {
     id
   }
 }
+
+export const actUpdateProductInCart = (product, quantity) => {
+  return {
+    type: Types.UPDATE_PRODUCT_IN_CART,
+    product,
+    quantity
+  }
+}

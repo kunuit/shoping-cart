@@ -6,13 +6,12 @@ import Cart from "../components/Cart";
 import CartItem from "../components/CartItem";
 import CartResult from "../components/CartResult";
 import * as Message from "../constants/Message.constant";
-import { actDeleteProductInCart, actChangeMessage } from "../actions/index.action";
+import { actDeleteProductInCart, actChangeMessage, actUpdateProductInCart } from "../actions/index.action";
 
 class CartContainer extends Component {
   render() {
     // khai bao bien
     var {cart } = this.props
-    console.log(cart)
     // the tuong tac JSX
     return (
       <Cart>
@@ -23,7 +22,7 @@ class CartContainer extends Component {
   }
   // cac function thuc thi
   showCartItem = (cart) => {
-    var { onDeleteProductInCart, onChangeMessage } = this.props
+    var { onDeleteProductInCart, onChangeMessage, onUpdateProductInCart } = this.props
     var result = <tr>
         <td>
         {Message.MSG_CART_EMPTY}
@@ -38,6 +37,7 @@ class CartContainer extends Component {
             index={index}
             onDeleteProductInCart={onDeleteProductInCart}
             onChangeMessage={onChangeMessage}
+            onUpdateProductInCart={onUpdateProductInCart}
           />
         )
       })
@@ -70,7 +70,10 @@ CartContainer.propTypes = {
       }).isRequired,
       quantity: PropTypes.number.isRequired
     })
-  ).isRequired
+  ).isRequired,
+  onUpdateProductInCart: PropTypes.func.isRequired,
+  onChangeMessage: PropTypes.func.isRequired,
+  onDeleteProductInCart: PropTypes.func.isRequired
 }
 
 // connect to redux de lay state trong store
@@ -87,6 +90,9 @@ const mapDispatchToProp = (dispatch, props) => {
     },
     onChangeMessage: (message) => {
       dispatch(actChangeMessage(message))
+    },
+    onUpdateProductInCart: (product, quantity) => {
+      dispatch(actUpdateProductInCart(product,quantity))
     }
   }
 }
